@@ -65,9 +65,11 @@ function compareCards(){
 		// TODO animation
 		// TODO trun / close cards
 	}
-	openCard1.classList.remove('open');
-	openCard2.classList.remove('open');
-	// TODO take cards off opencards array
+	setTimeout(function(){
+		openCard1.classList.remove('open');
+		openCard2.classList.remove('open');
+		openCards.length = 0;
+	}, 1000)
 }
 
 //set up the event listener for a card. If a card is clicked:

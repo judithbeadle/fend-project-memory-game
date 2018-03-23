@@ -5,6 +5,7 @@
 const deck = document.querySelector('.deck');
 const allCards = Array.from(deck.getElementsByClassName('card'));
 const openCards = [];
+const matchedCards = [];
 let moves = 0;
 /*
  * Display the cards on the page
@@ -60,6 +61,8 @@ function compareCards(){
 	if (symbol1 == symbol2){
 		openCard1.className = 'card match';
 		openCard2.className = 'card match';
+		matchedCards.push(openCard1, openCard2);
+
 	} else {
 		openCard1.classList.add('wrong');
 		openCard2.classList.add('wrong');
@@ -69,12 +72,18 @@ function compareCards(){
 		}, 1500)
 	}
 	openCards.length = 0;
+	console.log(matchedCards.length);
+	if (allCards.length === matchedCards.length){
+		console.log('done');
+	}
 }
 
 function countMoves(){
 	moves++;
 	console.log(moves);
 }
+
+
 
 //set up the event listener for a card. If a card is clicked:
 

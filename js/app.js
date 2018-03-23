@@ -57,17 +57,18 @@ function compareCards(){
 	const symbol2 = openCard2.getElementsByTagName('i')[0].classList.item(1);
 
 	if (symbol1 == symbol2){
-		openCard1.className('card match');
-		openCard2.className('card match');
+		openCard1.className = 'card match';
+		openCard2.className = 'card match';
 	} else {
 		openCard1.classList.add('wrong');
 		openCard2.classList.add('wrong');
+		setTimeout(function(){
+			openCard1.className = 'card';
+			openCard2.className = 'card';
+		}, 1500)
 	}
-	setTimeout(function(){
-		openCard1.className('card');
-		openCard2.className('card');
-		openCards.length = 0;
-	}, 1000)
+	openCards.length = 0;
+	
 }
 
 //set up the event listener for a card. If a card is clicked:

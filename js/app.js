@@ -6,6 +6,7 @@ const deck = document.querySelector('.deck');
 const allCards = Array.from(deck.getElementsByClassName('card'));
 const openCards = [];
 const matchedCards = [];
+const restartButton = document.querySelector('.restart')
 let moves = 0;
 /*
  * Display the cards on the page
@@ -83,11 +84,17 @@ function countMoves(){
 	console.log(moves);
 }
 
-
+function restart(){
+	for (i = 0; i < allCards.length; i++) {
+		allCards[i].className = 'card';
+	}
+	matchedCards.length = 0;
+}
 
 //set up the event listener for a card. If a card is clicked:
 
 deck.addEventListener('click', showcard);
+restartButton.addEventListener('click', restart);
 
 /*
  *  - display the card's symbol (put this functionality in another function that you call from this one)

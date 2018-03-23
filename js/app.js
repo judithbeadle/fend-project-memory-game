@@ -7,6 +7,7 @@ const allCards = Array.from(deck.getElementsByClassName('card'));
 const openCards = [];
 const matchedCards = [];
 const restartButton = document.querySelector('.restart')
+let seconds = 0;
 let moves = 0;
 /*
  * Display the cards on the page
@@ -28,6 +29,12 @@ function shuffle(array) {
     }
 
     return array;
+}
+
+function countSeconds(){
+	seconds ++;
+		document.querySelector('.timer').innerHTML = seconds;
+	
 }
 
 function showcard(event){
@@ -54,6 +61,7 @@ function addtoOpenCards(thisCard){
 
 function compareCards(){
 	countMoves();
+	displayMoves();
 	const openCard1 = openCards[0];
 	const openCard2 = openCards[1];
 	const symbol1 = openCard1.getElementsByTagName('i')[0].classList.item(1);
@@ -73,7 +81,6 @@ function compareCards(){
 		}, 1500)
 	}
 	openCards.length = 0;
-	console.log(matchedCards.length);
 	if (allCards.length === matchedCards.length){
 		console.log('done');
 	}
@@ -81,7 +88,10 @@ function compareCards(){
 
 function countMoves(){
 	moves++;
-	console.log(moves);
+}
+
+function displayMoves(){
+	document.querySelector('.moves').innerHTML = moves;
 }
 
 function restart(){
@@ -89,12 +99,21 @@ function restart(){
 		allCards[i].className = 'card';
 	}
 	matchedCards.length = 0;
+	moves = 0;
+	seconds = 0;
+	displayMoves();
 }
 
-//set up the event listener for a card. If a card is clicked:
 
+
+//starting up
+shuffle(allCards);
 deck.addEventListener('click', showcard);
 restartButton.addEventListener('click', restart);
+displayMoves();
+setInterval(countSeconds, 1000);
+
+
 
 /*
  *  - display the card's symbol (put this functionality in another function that you call from this one)

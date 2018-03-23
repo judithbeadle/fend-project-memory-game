@@ -5,7 +5,7 @@
 const deck = document.querySelector('.deck');
 const allCards = Array.from(deck.getElementsByClassName('card'));
 const openCards = [];
-
+let moves = 0;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -51,6 +51,7 @@ function addtoOpenCards(thisCard){
 }
 
 function compareCards(){
+	countMoves();
 	const openCard1 = openCards[0];
 	const openCard2 = openCards[1];
 	const symbol1 = openCard1.getElementsByTagName('i')[0].classList.item(1);
@@ -68,7 +69,11 @@ function compareCards(){
 		}, 1500)
 	}
 	openCards.length = 0;
-	
+}
+
+function countMoves(){
+	moves++;
+	console.log(moves);
 }
 
 //set up the event listener for a card. If a card is clicked:

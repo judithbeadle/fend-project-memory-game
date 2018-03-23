@@ -30,8 +30,14 @@ function shuffle(array) {
 function showcard(event){
 	if (event.target.nodeName === 'LI') {
 		console.log('clicked' + event.target.className);
+		let thisCard = event.target;
+		revealIcon(thisCard);
 	};
-	
+}
+
+function revealIcon(thisCard){
+	thisCard.classList.toggle("open");
+	console.log('icon revealed');
 }
 
 

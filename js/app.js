@@ -4,6 +4,7 @@
 
 const deck = document.querySelector('.deck');
 const allCards = Array.from(deck.getElementsByClassName('card'));
+const openCards = [];
 
 /*
  * Display the cards on the page
@@ -32,12 +33,17 @@ function showcard(event){
 		console.log('clicked' + event.target.className);
 		let thisCard = event.target;
 		revealIcon(thisCard);
+		addtoOpenCards(thisCard);
 	};
 }
 
 function revealIcon(thisCard){
 	thisCard.classList.toggle("open");
 	console.log('icon revealed');
+}
+
+function addtoOpenCards(thisCard){
+	console.log('added to open cards');
 }
 
 

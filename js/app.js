@@ -34,6 +34,9 @@ function showcard(event){
 		let thisCard = event.target;
 		revealIcon(thisCard);
 		addtoOpenCards(thisCard);
+		if (openCards.length == 2){
+			compareCards();
+		}
 	};
 }
 
@@ -47,6 +50,18 @@ function addtoOpenCards(thisCard){
 	openCards.push(thisCard);
 }
 
+function compareCards(){
+	const openCard1 = openCards[0];
+	const openCard2 = openCards[1];
+	const symbol1 = openCard1.getElementsByTagName('i')[0].classList.item(1);
+	const symbol2 = openCard2.getElementsByTagName('i')[0].classList.item(1);
+
+	if (symbol1 == symbol2){
+		console.log('its a match');
+	} else {
+		console.log('sorry, wrong');
+	}
+}
 
 //set up the event listener for a card. If a card is clicked:
 

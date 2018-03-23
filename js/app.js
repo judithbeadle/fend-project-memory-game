@@ -2,6 +2,8 @@
  * Create a list that holds all of your cards
  */
 
+const deck = document.querySelector('.deck');
+const allCards = Array.from(deck.getElementsByClassName('card'));
 
 /*
  * Display the cards on the page

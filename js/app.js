@@ -58,9 +58,14 @@ function compareCards(){
 
 	if (symbol1 == symbol2){
 		console.log('its a match');
+		// TODO change class to match
 	} else {
 		console.log('sorry, wrong');
+		// TODO some timer function
+		// TODO animation
+		// TODO trun / close cards
 	}
+	// TODO take cards off opencards array
 }
 
 //set up the event listener for a card. If a card is clicked:

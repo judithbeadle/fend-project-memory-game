@@ -28,7 +28,10 @@ function shuffle(array) {
 }
 
 function showcard(event){
-	console.log('clicked' + event.target.className);
+	if (event.target.nodeName === 'LI') {
+		console.log('clicked' + event.target.className);
+	};
+	
 }
 
 

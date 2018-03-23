@@ -29,7 +29,7 @@ function shuffle(array) {
 }
 
 function showcard(event){
-	if (event.target.nodeName === 'LI') {
+	if (event.target.className === 'card') {
 		console.log('clicked' + event.target.className);
 		let thisCard = event.target;
 		revealIcon(thisCard);

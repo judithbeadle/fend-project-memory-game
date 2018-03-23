@@ -57,14 +57,16 @@ function compareCards(){
 	const symbol2 = openCard2.getElementsByTagName('i')[0].classList.item(1);
 
 	if (symbol1 == symbol2){
-		console.log('its a match');
-		// TODO change class to match
+		openCard1.classList.add('match');
+		openCard2.classList.add('match');
 	} else {
 		console.log('sorry, wrong');
 		// TODO some timer function
 		// TODO animation
 		// TODO trun / close cards
 	}
+	openCard1.classList.remove('open');
+	openCard2.classList.remove('open');
 	// TODO take cards off opencards array
 }
 

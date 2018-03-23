@@ -27,6 +27,11 @@ function shuffle(array) {
     return array;
 }
 
+function showcard(event){
+	console.log('clicked' + event.target.className);
+}
+
+
 //set up the event listener for a card. If a card is clicked:
 
 deck.addEventListener('click', showcard);

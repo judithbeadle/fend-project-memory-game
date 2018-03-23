@@ -44,6 +44,7 @@ function revealIcon(thisCard){
 
 function addtoOpenCards(thisCard){
 	console.log('added to open cards');
+	openCards.push(thisCard);
 }
 
 

@@ -57,17 +57,15 @@ function compareCards(){
 	const symbol2 = openCard2.getElementsByTagName('i')[0].classList.item(1);
 
 	if (symbol1 == symbol2){
-		openCard1.classList.add('match');
-		openCard2.classList.add('match');
+		openCard1.className('card match');
+		openCard2.className('card match');
 	} else {
-		console.log('sorry, wrong');
-		// TODO some timer function
-		// TODO animation
-		// TODO trun / close cards
+		openCard1.classList.add('wrong');
+		openCard2.classList.add('wrong');
 	}
 	setTimeout(function(){
-		openCard1.classList.remove('open');
-		openCard2.classList.remove('open');
+		openCard1.className('card');
+		openCard2.className('card');
 		openCards.length = 0;
 	}, 1000)
 }

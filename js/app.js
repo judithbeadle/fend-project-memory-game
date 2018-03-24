@@ -9,32 +9,32 @@ const matchedCards = [];
 const restartButton = document.querySelector('.restart')
 let seconds = 0;
 let moves = 0;
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+function shuffle() {
+    // remove all li.cards from the DOM
+    allCards.forEach(function (item) {
+	    item.remove();
+	    console.log('removing');
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
+	});
+	//shuffle
+	for (let i = allCards.length - 1; i > 0; i--) {
+	    const j = Math.floor(Math.random() * (i + 1));
+	    [allCards[i], allCards[j]] = [allCards[j], allCards[i]];
+	    console.log('doing');
+	}
+    // add back
+    allCards.forEach(function (item) {
+	    deck.appendChild(item);
+	    console.log('putting back');
+	});
 }
 
 function countSeconds(){
 	seconds ++;
 		document.querySelector('.timer').innerHTML = seconds;
-	
 }
 
 function showcard(event){
@@ -82,7 +82,7 @@ function compareCards(){
 	}
 	openCards.length = 0;
 	if (allCards.length === matchedCards.length){
-		console.log('done');
+		// TODO: end game function
 	}
 }
 
@@ -102,12 +102,13 @@ function restart(){
 	moves = 0;
 	seconds = 0;
 	displayMoves();
+	shuffle();
 }
 
 
 
 //starting up
-shuffle(allCards);
+shuffle();
 deck.addEventListener('click', showcard);
 restartButton.addEventListener('click', restart);
 displayMoves();

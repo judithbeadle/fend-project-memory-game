@@ -19,7 +19,7 @@ function shuffle() {
 	    console.log('removing');
 
 	});
-	//shuffle
+	//shuffle credit https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
 	for (let i = allCards.length - 1; i > 0; i--) {
 	    const j = Math.floor(Math.random() * (i + 1));
 	    [allCards[i], allCards[j]] = [allCards[j], allCards[i]];

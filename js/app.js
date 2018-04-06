@@ -6,7 +6,9 @@ const deck = document.querySelector('.deck');
 const allCards = Array.from(deck.getElementsByClassName('card'));
 const openCards = [];
 const matchedCards = [];
-const restartButton = document.querySelector('.restart')
+const restartButton = document.querySelector('.restart');
+let timer = null;
+
 let seconds = 0;
 let moves = 0;
 
@@ -16,25 +18,26 @@ function shuffle() {
     // remove all li.cards from the DOM
     allCards.forEach(function (item) {
 	    item.remove();
-	    console.log('removing');
-
 	});
 	//shuffle credit https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
 	for (let i = allCards.length - 1; i > 0; i--) {
 	    const j = Math.floor(Math.random() * (i + 1));
 	    [allCards[i], allCards[j]] = [allCards[j], allCards[i]];
-	    console.log('doing');
 	}
     // add back
     allCards.forEach(function (item) {
 	    deck.appendChild(item);
-	    console.log('putting back');
 	});
 }
 
-function countSeconds(){
+function runTimer(){
 	seconds ++;
-		document.querySelector('.timer').innerHTML = seconds;
+	document.querySelector('.timer').innerHTML = seconds;
+}
+
+function stopTimer() {
+    clearInterval(timer);
+    console.log('timer stopped')
 }
 
 function showcard(event){
@@ -45,6 +48,9 @@ function showcard(event){
 		addtoOpenCards(thisCard);
 		if (openCards.length == 2){
 			compareCards();
+		}
+		if (openCards.length == 1 && moves == 0){
+			timer = setInterval(function(){runTimer()},1000);
 		}
 	};
 }
@@ -82,7 +88,7 @@ function compareCards(){
 	}
 	openCards.length = 0;
 	if (allCards.length === matchedCards.length){
-		// TODO: end game function
+		endGame();
 	}
 }
 
@@ -94,25 +100,34 @@ function displayMoves(){
 	document.querySelector('.moves').innerHTML = moves;
 }
 
-function restart(){
+function gameSummary(){
+	document.querySelector('.score-panel').innerHTML = 'over';
+}
+
+function newGame(){
 	for (i = 0; i < allCards.length; i++) {
 		allCards[i].className = 'card';
 	}
 	matchedCards.length = 0;
 	moves = 0;
 	seconds = 0;
-	displayMoves();
 	shuffle();
+	displayMoves();
+}
+
+function endGame() {
+	stopTimer();
+	gameSummary();
 }
 
 
 
 //starting up
-shuffle();
+newGame();
 deck.addEventListener('click', showcard);
-restartButton.addEventListener('click', restart);
-displayMoves();
-setInterval(countSeconds, 1000);
+restartButton.addEventListener('click', newGame);
+
+
 
 
 

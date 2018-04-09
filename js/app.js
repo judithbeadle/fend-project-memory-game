@@ -41,8 +41,9 @@ function stopTimer() {
 }
 
 function showcard(event){
-	if (event.target.className === 'card') {
+	if ((event.target.className === 'card') && (openCards.length < 2)) {
 		console.log('clicked' + event.target.className);
+		console.log(openCards.length)
 		let thisCard = event.target;
 		revealIcon(thisCard);
 		addtoOpenCards(thisCard);
@@ -77,16 +78,16 @@ function compareCards(){
 		openCard1.className = 'card match';
 		openCard2.className = 'card match';
 		matchedCards.push(openCard1, openCard2);
-
+		openCards.length = 0;
 	} else {
 		openCard1.classList.add('wrong');
 		openCard2.classList.add('wrong');
 		setTimeout(function(){
 			openCard1.className = 'card';
 			openCard2.className = 'card';
-		}, 1500)
+			openCards.length = 0;
+		}, 1000)
 	}
-	openCards.length = 0;
 	if (allCards.length === matchedCards.length){
 		endGame();
 	}
@@ -126,6 +127,7 @@ function endGame() {
 newGame();
 deck.addEventListener('click', showcard);
 restartButton.addEventListener('click', newGame);
+
 
 
 

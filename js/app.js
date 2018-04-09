@@ -2,13 +2,15 @@
  * Create a list that holds all of your cards
  */
 
+const container = document.querySelector('.container');
+const scorePanel = document.querySelector('.score-panel');
+const summaryPanel = document.createElement('div');
 const deck = document.querySelector('.deck');
 const allCards = Array.from(deck.getElementsByClassName('card'));
 const openCards = [];
 const matchedCards = [];
 const restartButton = document.querySelector('.restart');
 let timer = null;
-
 let seconds = 0;
 let moves = 0;
 
@@ -32,12 +34,16 @@ function shuffle() {
 
 function runTimer(){
 	seconds ++;
+	displayTime();
+}
+
+function displayTime(){
 	document.querySelector('.timer').innerHTML = seconds;
 }
 
 function stopTimer() {
     clearInterval(timer);
-    console.log('timer stopped')
+    console.log('timer stopped after ' + seconds + 'seconds');
 }
 
 function showcard(event){
@@ -102,7 +108,10 @@ function displayMoves(){
 }
 
 function gameSummary(){
-	document.querySelector('.score-panel').innerHTML = 'over';
+	container.prepend(summaryPanel);
+	summaryPanel.className = 'summary-panel';
+	summaryPanel.innerHTML = '<h2>Congratulations!</h2>' + document.querySelector('.stars').outerHTML + '<p>here\'s your summary: </p><p>It took you ' + moves + ' moves and ' + seconds + ' seconds.';
+	summaryPanel.append(restartButton);
 }
 
 function newGame(){
@@ -114,6 +123,9 @@ function newGame(){
 	seconds = 0;
 	shuffle();
 	displayMoves();
+	displayTime();
+	const removedPanel = summaryPanel.remove();
+	scorePanel.append(restartButton);
 }
 
 function endGame() {

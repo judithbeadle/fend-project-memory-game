@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-* [Instructions](#introduction)
+* [Introduction](#introduction)
 * [Contributing](#contributing)
 
 ## Introduction

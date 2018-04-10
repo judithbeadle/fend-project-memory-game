@@ -127,7 +127,7 @@ function displayMoves(){
 function gameSummary(){
 	container.prepend(summaryPanel);
 	summaryPanel.className = 'summary-panel';
-	summaryPanel.innerHTML = '<h2>Congratulations!</h2>' + document.querySelector('.stars').outerHTML + '<p>here\'s your summary: </p><p>It took you ' + moves + ' moves and ' + seconds + ' seconds.';
+	summaryPanel.innerHTML = '<h2>You won!</h2>' + document.querySelector('.stars').outerHTML + '<p>It took you <strong>' + moves + ' moves </strong> and <strong>' + seconds + ' seconds</strong> to match all cards. <p>Want to play again?</p>';
 	summaryPanel.append(restartButton);
 }
 

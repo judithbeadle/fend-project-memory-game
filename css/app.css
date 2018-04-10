@@ -85,6 +85,10 @@ h1 {
     background: #e40059;
 }
 
+.deck .card.inactive {
+    cursor: auto;
+}
+
 @keyframes pulse{
     5%  {transform: scale(0.9);}
     10%  {transform: scale(1.1);}

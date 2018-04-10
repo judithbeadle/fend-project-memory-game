@@ -43,13 +43,10 @@ function displayTime(){
 
 function stopTimer() {
     clearInterval(timer);
-    console.log('timer stopped after ' + seconds + 'seconds');
 }
 
 function showcard(event){
 	if ((event.target.className === 'card') && (openCards.length < 2)) {
-		console.log('clicked' + event.target.className);
-		console.log(openCards.length)
 		let thisCard = event.target;
 		revealIcon(thisCard);
 		addtoOpenCards(thisCard);
@@ -79,7 +76,6 @@ function compareCards(){
 	const openCard2 = openCards[1];
 	const symbol1 = openCard1.getElementsByTagName('i')[0].classList.item(1);
 	const symbol2 = openCard2.getElementsByTagName('i')[0].classList.item(1);
-
 	if (symbol1 == symbol2){
 		openCard1.className = 'card match';
 		openCard2.className = 'card match';
@@ -88,10 +84,16 @@ function compareCards(){
 	} else {
 		openCard1.classList.add('wrong');
 		openCard2.classList.add('wrong');
+		allCards.forEach(function(card) {
+		  card.classList.add('inactive');
+		});
 		setTimeout(function(){
 			openCard1.className = 'card';
 			openCard2.className = 'card';
 			openCards.length = 0;
+			allCards.forEach(function(card) {
+			  card.classList.remove('inactive');
+			});
 		}, 1000)
 	}
 	if (allCards.length === matchedCards.length){

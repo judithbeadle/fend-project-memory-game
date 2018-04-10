@@ -61,11 +61,9 @@ function showcard(event){
 
 function revealIcon(thisCard){
 	thisCard.classList.toggle("open");
-	console.log('icon revealed');
 }
 
 function addtoOpenCards(thisCard){
-	console.log('added to open cards');
 	openCards.push(thisCard);
 }
 

@@ -143,11 +143,16 @@ function newGame(){
 	displayTime();
 	const removedPanel = summaryPanel.remove();
 	scorePanel.append(restartButton);
+	container.classList.remove('end');
+	stars.forEach(function(star) {
+	  star.className = 'fa fa-star';
+	});
 }
 
 function endGame() {
 	stopTimer();
 	gameSummary();
+	container.classList.add('end');
 }
 
 

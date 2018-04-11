@@ -125,7 +125,7 @@ function gameSummary(){
 }
 
 function newGame(){
-	for (i = 0; i < allCards.length; i++) {
+	for (let i = 0; i < allCards.length; i++) {
 		allCards[i].className = 'card';
 	}
 	matchedCards.length = 0;
@@ -134,7 +134,7 @@ function newGame(){
 	shuffle();
 	displayMoves();
 	displayTime();
-	const removedPanel = summaryPanel.remove();
+	summaryPanel.remove();
 	scorePanel.append(restartButton);
 	container.classList.remove('end');
 	stars.forEach(function(star) {

@@ -4,7 +4,7 @@ The classic game recreated with HTML, CSS and JavaScript.
 
 ## Table of Contents
 
-* [The game](#the game)
+* [The game](#the-game)
 * [Contributing](#contributing)
 * [Acknowledgements and Sources](#acknowledgements-and-sources)
 

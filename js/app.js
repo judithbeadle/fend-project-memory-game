@@ -107,18 +107,13 @@ function displayMoves(){
 	document.querySelector('.moves').innerHTML = moves;
 	const star1 = stars[0];
 	const star2 = stars[1];
-	const star3 = stars[2];
-	if (moves > 12 ){
+	if (moves > 16 ){
 		star1.classList.remove('fa-star');
 		star1.classList.add('fa-star-o');
 	}
-	if (moves > 18 ){
+	if (moves > 22 ){
 		star2.classList.remove('fa-star');
 		star2.classList.add('fa-star-o');
-	}
-	if (moves > 24 ){
-		star3.classList.remove('fa-star');
-		star3.classList.add('fa-star-o');
 	}
 }
 
@@ -130,7 +125,7 @@ function gameSummary(){
 }
 
 function newGame(){
-	for (i = 0; i < allCards.length; i++) {
+	for (let i = 0; i < allCards.length; i++) {
 		allCards[i].className = 'card';
 	}
 	matchedCards.length = 0;
@@ -139,7 +134,7 @@ function newGame(){
 	shuffle();
 	displayMoves();
 	displayTime();
-	const removedPanel = summaryPanel.remove();
+	summaryPanel.remove();
 	scorePanel.append(restartButton);
 	container.classList.remove('end');
 	stars.forEach(function(star) {
